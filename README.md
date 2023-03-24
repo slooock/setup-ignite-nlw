@@ -64,8 +64,6 @@ Aplicação completa com back-end, front-end e mobile.
 
 ```bash
 # Clone e acesse a pasta
-$ git clone https://github.com/LuanContreiras/nlw-setup-ignite 
-$ cd nlw-setup-ignite
 
 
 # Back-end - Instalando as dependências
