@@ -1,0 +1,335 @@
+[
+ {
+  "query_name": "S3 Bucket ACL Allows Read Or Write to All Users",
+  "query_id": "38c5ee0d-7f22-4260-ab72-5073048df100",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket",
+  "severity": "CRITICAL",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Access Control",
+  "description": "S3 Buckets should not be readable and writable to all users",
+  "description_id": "d535387f",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "02b1dd0da6bb7ae73e76fe1eadef5a129f254b8deefb3cb6546da80183033079",
+    "line": 7,
+    "issue_type": "IncorrectValue",
+    "search_key": "aws_s3_bucket[public_bucket].acl=public-read",
+    "search_line": 7,
+    "search_value": "",
+    "expected_value": "'acl' should equal to 'private'",
+    "actual_value": "'acl' is equal 'public-read'"
+   }
+  ]
+ },
+ {
+  "query_name": "IAM Policy Grants Full Permissions",
+  "query_id": "575a2155-6af1-4026-b1af-d5bc8fe2a904",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy",
+  "severity": "HIGH",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Access Control",
+  "description": "IAM policy should not grant full permissions to resources from the get-go, instead of granting permissions gradually as necessary.",
+  "description_id": "f20cf2cf",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "77b2a98aa8dffb1fc42600e7d5d66a68299f057b69d94f303b4ace308e760acf",
+    "line": 34,
+    "issue_type": "IncorrectValue",
+    "search_key": "aws_iam_policy[insecure_policy].policy",
+    "search_line": 34,
+    "search_value": "",
+    "expected_value": "'policy.Statement.Resource' and 'policy.Statement.Action' should not equal '*'",
+    "actual_value": "'policy.Statement.Resource' and 'policy.Statement.Action' are equal to '*'"
+   }
+  ]
+ },
+ {
+  "query_name": "Missing User Instruction",
+  "query_id": "fd54f200-402c-4333-a5a4-36ef6709af2f",
+  "query_url": "https://docs.docker.com/engine/reference/builder/#user",
+  "severity": "HIGH",
+  "platform": "Dockerfile",
+  "category": "Build Process",
+  "description": "A user should be specified in the dockerfile, otherwise the image will run as root",
+  "description_id": "eb49caf6",
+  "files": [
+   {
+    "file_name": "Dockerfile",
+    "similarity_id": "fe16c75adab39dd64ef3a270b71172d7901de1a59061ba753edc85357234278a",
+    "line": 1,
+    "issue_type": "MissingAttribute",
+    "search_key": "FROM={{alpine}}",
+    "search_line": -1,
+    "search_value": "",
+    "expected_value": "The 'Dockerfile' should contain the 'USER' instruction",
+    "actual_value": "The 'Dockerfile' does not contain any 'USER' instruction"
+   }
+  ]
+ },
+ {
+  "query_name": "Sensitive Port Is Exposed To Entire Network",
+  "query_id": "381c3f2a-ef6f-4eff-99f7-b169cda3422c",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group",
+  "severity": "HIGH",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Networking and Firewall",
+  "description": "A sensitive port, such as port 23 or port 110, is open for the whole network in either TCP or UDP protocol",
+  "description_id": "5be78364",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "446a689d0649760806feaa1e0a807772f56e52e04a356fc2328919d71460432f",
+    "line": 15,
+    "issue_type": "IncorrectValue",
+    "search_key": "aws_security_group[insecure_sg].ingress",
+    "search_line": -1,
+    "search_value": "TCP,22",
+    "expected_value": "SSH (TCP:22) should not be allowed",
+    "actual_value": "SSH (TCP:22) is allowed"
+   }
+  ]
+ },
+ {
+  "query_name": "Unrestricted Security Group Ingress",
+  "query_id": "4728cd65-a20c-49da-8b31-9c08b423e4db",
+  "query_url": "https://www.terraform.io/docs/providers/aws/r/security_group.html",
+  "severity": "HIGH",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Networking and Firewall",
+  "description": "Security groups allow ingress from 0.0.0.0:0 and/or ::/0",
+  "description_id": "ce3ee5e0",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "ffd33bbab6458fe2c6f929040c6216efe9d3269abed635f582ffabe27c8f582b",
+    "line": 19,
+    "issue_type": "IncorrectValue",
+    "search_key": "aws_security_group[insecure_sg].ingress.cidr_blocks",
+    "search_line": -1,
+    "search_value": "",
+    "expected_value": "One of 'ingress.cidr_blocks' not equal '0.0.0.0/0'",
+    "actual_value": "One of 'ingress.cidr_blocks' equal '0.0.0.0/0'"
+   }
+  ]
+ },
+ {
+  "query_name": "IAM Policies With Full Privileges",
+  "query_id": "2f37c4a3-58b9-4afe-8a87-d7f1d2286f84",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy",
+  "severity": "MEDIUM",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Access Control",
+  "description": "IAM policies shouldn't allow full administrative privileges (for all resources)",
+  "description_id": "7f603399",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "d9dde808b9181a7a7f2d0c18a7df6c4384d8ded5b6d8fed48987c4a9e5195345",
+    "line": 34,
+    "issue_type": "IncorrectValue",
+    "search_key": "aws_iam_policy[insecure_policy].policy",
+    "search_line": 34,
+    "search_value": "",
+    "expected_value": "'policy.Statement.Action' shouldn't contain '*'",
+    "actual_value": "'policy.Statement.Action' contains '*'"
+   }
+  ]
+ },
+ {
+  "query_name": "IAM policy allows for data exfiltration",
+  "query_id": "ba2ed23b-52d3-45ca-be25-f6c358d45abd",
+  "query_url": "https://cloudsplaining.readthedocs.io/en/latest/glossary/data-exfiltration/",
+  "severity": "MEDIUM",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Resource Management",
+  "description": "This policy contains actions that can retrieve information unrestricted and could lead to data exfiltration",
+  "description_id": "ba2ed23b",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "cb6ad2105268feccf7ad08bfa30f89d0cb855701a95c05da25e344dcaf2e474e",
+    "line": 34,
+    "issue_type": "IncorrectValue",
+    "search_key": "aws_iam_policy[insecure_policy].policy",
+    "search_line": 34,
+    "search_value": "*",
+    "expected_value": "'insecure_policy.policy.Statement.Action[0]' shouldn't contain ilegal actions",
+    "actual_value": "'insecure_policy.policy.Statement.Action[0]' contains [*]"
+   }
+  ]
+ },
+ {
+  "query_name": "Image Version Not Explicit",
+  "query_id": "9efb0b2d-89c9-41a3-91ca-dcc0aec911fd",
+  "query_url": "https://docs.docker.com/engine/reference/builder/#from",
+  "severity": "MEDIUM",
+  "platform": "Dockerfile",
+  "category": "Supply-Chain",
+  "description": "Always tag the version of an image explicitly",
+  "description_id": "4f469f06",
+  "files": [
+   {
+    "file_name": "Dockerfile",
+    "similarity_id": "2b13cdcc185b86e71995c052b3e5847e66e9d5db29eec74a500834fa5f87aa84",
+    "line": 1,
+    "issue_type": "MissingAttribute",
+    "search_key": "FROM={{alpine}}",
+    "search_line": -1,
+    "search_value": "",
+    "expected_value": "FROM alpine:'version'",
+    "actual_value": "FROM alpine'"
+   }
+  ]
+ },
+ {
+  "query_name": "S3 Bucket Logging Disabled",
+  "query_id": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket",
+  "severity": "MEDIUM",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Observability",
+  "description": "Server Access Logging should be enabled on S3 Buckets so that all changes are logged and trackable",
+  "description_id": "fa5c7c72",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "dd089a52c29b900af06e5b47519c09c5eb39a385b4f6c461bfb0a9c5f778bb7b",
+    "line": 5,
+    "issue_type": "MissingAttribute",
+    "search_key": "aws_s3_bucket[public_bucket]",
+    "search_line": 5,
+    "search_value": "",
+    "expected_value": "'logging' should be defined and not null",
+    "actual_value": "'logging' is undefined or null"
+   }
+  ]
+ },
+ {
+  "query_name": "S3 Bucket Without Versioning",
+  "query_id": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#versioning",
+  "severity": "MEDIUM",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Backup",
+  "description": "S3 bucket should have versioning enabled",
+  "description_id": "7614ce3b",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "ab0463edcbd0e2152adcf6337f249a8f1737944f824e5a6d58844f087abd7de4",
+    "line": 5,
+    "issue_type": "MissingAttribute",
+    "search_key": "aws_s3_bucket[public_bucket]",
+    "search_line": 5,
+    "search_value": "",
+    "expected_value": "'versioning' should be true",
+    "actual_value": "'versioning' is undefined or null"
+   }
+  ]
+ },
+ {
+  "query_name": "Security Group With Unrestricted Access To SSH",
+  "query_id": "65905cec-d691-4320-b320-2000436cb696",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group",
+  "severity": "MEDIUM",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Networking and Firewall",
+  "description": "'SSH' (TCP:22) should not be public in AWS Security Group",
+  "description_id": "51e59188",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "df7fe6facaa51cc690c8570feb278a8a44045b2599091b6800109226c10dde3d",
+    "line": 15,
+    "issue_type": "IncorrectValue",
+    "search_key": "aws_security_group[insecure_sg].ingress",
+    "search_line": 15,
+    "search_value": "",
+    "expected_value": "aws_security_group[insecure_sg] 'SSH' (Port:22) should not be public",
+    "actual_value": "aws_security_group[insecure_sg] 'SSH' (Port:22) is public"
+   }
+  ]
+ },
+ {
+  "query_name": "Healthcheck Instruction Missing",
+  "query_id": "b03a748a-542d-44f4-bb86-9199ab4fd2d5",
+  "query_url": "https://docs.docker.com/engine/reference/builder/#healthcheck",
+  "severity": "LOW",
+  "platform": "Dockerfile",
+  "category": "Insecure Configurations",
+  "description": "Ensure that HEALTHCHECK is being used. The HEALTHCHECK instruction tells Docker how to test a container to check that it is still working",
+  "description_id": "426121ee",
+  "files": [
+   {
+    "file_name": "Dockerfile",
+    "similarity_id": "f960191733e882417f359dec84ced77cb6b01d92c87d1137293e51facc245ef7",
+    "line": 1,
+    "issue_type": "MissingAttribute",
+    "search_key": "FROM={{alpine}}",
+    "search_line": -1,
+    "search_value": "",
+    "expected_value": "Dockerfile should contain instruction 'HEALTHCHECK'",
+    "actual_value": "Dockerfile doesn't contain instruction 'HEALTHCHECK'"
+   }
+  ]
+ },
+ {
+  "query_name": "IAM Access Analyzer Not Enabled",
+  "query_id": "e592a0c5-5bdb-414c-9066-5dba7cdea370",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/accessanalyzer_analyzer",
+  "severity": "LOW",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Best Practices",
+  "description": "IAM Access Analyzer should be enabled and configured to continuously monitor resource permissions",
+  "description_id": "d03e85ae",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "0a7d0464de505a54720d6002d14a22a32e6b20bb8189d444ab621d8ab838304f",
+    "line": 5,
+    "issue_type": "MissingAttribute",
+    "search_key": "resource",
+    "search_line": -1,
+    "search_value": "",
+    "expected_value": "'aws_accessanalyzer_analyzer' should be set",
+    "actual_value": "'aws_accessanalyzer_analyzer' is undefined"
+   }
+  ]
+ },
+ {
+  "query_name": "Lambda IAM InvokeFunction Misconfigured",
+  "query_id": "0ca1017d-3b80-423e-bb9c-6cd5898d34bd",
+  "query_url": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_permission",
+  "severity": "LOW",
+  "platform": "Terraform",
+  "cloud_provider": "AWS",
+  "category": "Best Practices",
+  "description": "Lambda permission may be misconfigured if the action field is not filled in by 'lambda:InvokeFunction'",
+  "description_id": "0ca1017d",
+  "files": [
+   {
+    "file_name": "main.tf",
+    "similarity_id": "621394b020bb1e0b3d0ee427d2a46843be9a8ade72ed35445c9b5b5b3bbfc31a",
+    "line": 34,
+    "issue_type": "IncorrectValue",
+    "search_key": "aws_iam_policy[insecure_policy].policy",
+    "search_line": -1,
+    "search_value": "",
+    "expected_value": "[insecure_policy].policy should be misconfigured",
+    "actual_value": "[insecure_policy].policy allows access to function (unqualified ARN) and its sub-resources, add another statement with \":*\" to function name"
+   }
+  ]
+ }
+]
