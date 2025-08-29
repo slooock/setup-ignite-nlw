@@ -1,0 +1,20 @@
+[
+ {
+  "Description": "Uncovered a Fastly API key, which may compromise CDN and edge cloud services, leading to content delivery and security issues.",
+  "StartLine": 3,
+  "EndLine": 3,
+  "StartColumn": 8,
+  "EndColumn": 58,
+  "Match": "FastlyAPIToken = \"uhZtofOcNnzoH6F5-m0bzsLvCqIjzNFG\"",
+  "Secret": "uhZtofOcNnzoH6F5-m0bzsLvCqIjzNFG",
+  "File": "pass.sh",
+  "Commit": "b130114ead1f08f1cfe2b56f0cdd0f8b2a064980",
+  "Entropy": 4.66391,
+  "Author": "Kayque Avelar",
+  "Email": "kayque.avelar@rainforest.tech",
+  "Date": "2025-05-30T18:18:32Z",
+  "Message": "debug",
+  "Tags": [],
+  "RuleID": "fastly-api-token"
+ }
+]
