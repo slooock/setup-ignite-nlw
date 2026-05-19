@@ -12,8 +12,16 @@
   "dependencies": {
     "@fastify/cors": "^8.2.0",
     "@prisma/client": "^4.8.1",
+    "axios": "0.21.1",
     "dayjs": "^1.11.7",
     "fastify": "^4.11.0",
+    "lodash": "4.17.15",
+    "minimist": "1.2.0",
+    "node-forge": "0.10.0",
+    "nth-check": "1.0.1",
+    "qs": "6.2.3",
+    "shelljs": "0.8.4",
+    "ws": "7.4.5",
     "zod": "^3.20.2"
   },
   "devDependencies": {
