@@ -1,0 +1,19 @@
+# Vulnerable Python Pip SCA target
+
+# Vulnerable to CVE-2022-34749 / CVE-2021-33571 etc.
+urllib3==1.26.5
+
+# Vulnerable to CVE-2021-28957 (SSRF/RCE)
+lxml==4.6.2
+
+# Vulnerable to CVE-2022-23491 (Certifi security bypass)
+certifi==2021.10.8
+
+# Vulnerable to CVE-2021-32839 (ReDoS)
+sqlparse==0.4.1
+
+# Vulnerable to CVE-2021-44368 (RCE)
+django==3.2.4
+
+# Vulnerable to CVE-2022-24765 (Git security bypass via gitpython)
+gitpython==3.1.20
