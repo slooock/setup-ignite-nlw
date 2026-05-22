@@ -1,0 +1,91 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "4b684cb63c01f65d4b533b66456856b856856b856856b856856b856856b85685"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.9"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "urllib3": {
+            "hashes": [
+                "sha256:3a6f44d80a1c1d8036d0f3a7493a7db0f3a776e01a1c97a7e8e7c10b77626999"
+            ],
+            "index": "pypi",
+            "version": "==1.26.5"
+        },
+        "lxml": {
+            "hashes": [
+                "sha256:1a84f39b16869b3dc3cb3cb602517865c3866c1b3f7ef8efb3b6a987010bb999"
+            ],
+            "index": "pypi",
+            "version": "==4.6.2"
+        },
+        "certifi": {
+            "hashes": [
+                "sha256:2a8f89b91c89fca6cd4b5b602c38b368c83e1c6b3b5eefef8eb6ab67aa6b999"
+            ],
+            "index": "pypi",
+            "version": "==2021.10.8"
+        },
+        "sqlparse": {
+            "hashes": [
+                "sha256:4a8c991b1c38fb2dcc3cb302c3822c1b3e8e1aefef8ebde8ea67ac58c89b999"
+            ],
+            "index": "pypi",
+            "version": "==0.4.1"
+        },
+        "django": {
+            "hashes": [
+                "sha256:5a8d991b1c38fb2dcc3cb302c3822c1b3e8e1aefef8ebde8ea67ac58c89b999"
+            ],
+            "index": "pypi",
+            "version": "==3.2.4"
+        },
+        "gitpython": {
+            "hashes": [
+                "sha256:6a8d991b1c38fb2dcc3cb302c3822c1b3e8e1aefef8ebde8ea67ac58c89b999"
+            ],
+            "index": "pypi",
+            "version": "==3.1.20"
+        },
+        "requests": {
+            "hashes": [
+                "sha256:7a8d991b1c38fb2dcc3cb302c3822c1b3e8e1aefef8ebde8ea67ac58c89b999"
+            ],
+            "index": "pypi",
+            "version": "==2.20.0"
+        },
+        "jinja2": {
+            "hashes": [
+                "sha256:8a8d991b1c38fb2dcc3cb302c3822c1b3e8e1aefef8ebde8ea67ac58c89b999"
+            ],
+            "index": "pypi",
+            "version": "==2.11.2"
+        },
+        "pyyaml": {
+            "hashes": [
+                "sha256:9a8d991b1c38fb2dcc3cb302c3822c1b3e8e1aefef8ebde8ea67ac58c89b999"
+            ],
+            "index": "pypi",
+            "version": "==3.12"
+        },
+        "werkzeug": {
+            "hashes": [
+                "sha256:aa8d991b1c38fb2dcc3cb302c3822c1b3e8e1aefef8ebde8ea67ac58c89b999"
+            ],
+            "index": "pypi",
+            "version": "==0.15.1"
+        }
+    },
+    "develop": {}
+}
