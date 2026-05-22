@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-urllib3 = "==1.26.5"
+urllib3 = "==1.24.3"
 lxml = "==4.6.2"
 certifi = "==2021.10.8"
 sqlparse = "==0.4.1"
