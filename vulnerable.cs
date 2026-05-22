@@ -14,6 +14,7 @@ using System.IO.Compression;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Builder;
 
 namespace VulnerableDotNet
 {
