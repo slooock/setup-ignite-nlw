@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+# Mobile/Client Ruby SCA Vulnerabilities
+gem 'addressable', '2.7.0'
+gem 'minitar', '0.8'
+gem 'kaminari', '1.2.0'

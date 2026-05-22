@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+# Server Ruby SCA Vulnerabilities
+gem 'puma', '5.3.0'
+gem 'devise', '4.7.2'
+gem 'psych', '3.1.0'
