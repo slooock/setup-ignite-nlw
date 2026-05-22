@@ -11,6 +11,9 @@ using System.Security.Authentication;
 using Newtonsoft.Json;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO.Compression;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Html;
 
 namespace VulnerableDotNet
 {
@@ -18,13 +21,17 @@ namespace VulnerableDotNet
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("GitLab SAST C# / .NET Test Target - Multi-Vuln");
+            var builder = WebApplication.CreateBuilder(args);
+            var app = builder.Build();
+            app.MapGet("/", () => "Vulnerable App running...");
+            app.Run();
         }
     }
 
-    public class VulnerableService
+    public class VulnerableController : Controller
     {
         // 1. SQL Injection (SCS0001 / SCS0002 / Semgrep)
+        [HttpGet("/sql")]
         public void ExecuteUnsafeSql(string userInput)
         {
             using (var connection = new SqlConnection("Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;"))
@@ -46,6 +53,7 @@ namespace VulnerableDotNet
         }
 
         // 2. Command Injection (SCS0005 / Semgrep)
+        [HttpGet("/cmd")]
         public void ExecuteUnsafeCommand(string userInput)
         {
             // Vulnerable: User input is passed directly to bash executing a shell command
@@ -88,6 +96,7 @@ namespace VulnerableDotNet
         private const string SuperSecurePassword = "MySuperSecretPassword123!";
 
         // 7. Path Traversal / Path Injection (SCS0018 / Semgrep)
+        [HttpGet("/path")]
         public string ReadUserFile(string userInput)
         {
             // Vulnerable: Concatenating input to base path allows path traversal (e.g. "../../../etc/passwd")
@@ -97,6 +106,7 @@ namespace VulnerableDotNet
         }
 
         // 8. Insecure XML External Entity Parsing (SCS0007 / XXE / Semgrep)
+        [HttpPost("/xml")]
         public void ParseXmlUnsafely(string xmlContent)
         {
             // Vulnerable: XmlDocument with insecure resolver and DTD processing enabled
@@ -228,6 +238,53 @@ namespace VulnerableDotNet
             #pragma warning disable CS0618
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11;
             #pragma warning restore CS0618
+        }
+
+        // --- ASP.NET Web / MVC Specific Vulnerabilities (SCS0009 / SCS0026 / SCS0027 / SCS0029) ---
+
+        // 17. Cross-Site Scripting - XSS (SCS0029)
+        [HttpGet("/xss")]
+        public ContentResult GetXss(string name)
+        {
+            // Vulnerable: Returning raw HTML with unescaped user input
+            return Content("<html><body><h1>Hello, " + name + "</h1></body></html>", "text/html");
+        }
+
+        [HttpGet("/htmlstring")]
+        public HtmlString GetHtmlString(string input)
+        {
+            // Vulnerable: Raw HTMLString bypassing HTML sanitization/escaping
+            return new HtmlString("<div>" + input + "</div>");
+        }
+
+        // 18. Open Redirect (SCS0027)
+        [HttpGet("/redirect")]
+        public IActionResult UnsafeRedirect(string url)
+        {
+            // Vulnerable: Redirecting to user-provided URL without validating if it is local/safe
+            return Redirect(url);
+        }
+
+        // 19. Cross-Site Request Forgery - CSRF / Missing AntiForgery Token (SCS0016 / SCS0020)
+        [HttpPost("/update-profile")]
+        // Vulnerable: Missing [ValidateAntiForgeryToken] attribute on state-changing POST action
+        public IActionResult UpdateProfile(string email)
+        {
+            Console.WriteLine("Profile updated to: " + email);
+            return Ok();
+        }
+
+        // 20. Insecure Cookie Policy (SCS0009 / SCS0025)
+        [HttpGet("/cookie")]
+        public void SetInsecureCookie()
+        {
+            // Vulnerable: HttpOnly and Secure flags are set to false or omitted
+            var options = new CookieOptions
+            {
+                HttpOnly = false,
+                Secure = false
+            };
+            Response.Cookies.Append("SessionToken", "SuperSecretSessionValue", options);
         }
     }
 }
