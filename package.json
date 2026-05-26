@@ -1,0 +1,29 @@
+{
+  "name": "setup-ignite-nlw",
+  "version": "1.0.0",
+  "description": "<h1>   🚀NLW SETUP - Trilha Ignite🚀 </h1>",
+  "main": "06 - \\303descrição copy 2.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slooock/setup-ignite-nlw.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/slooock/setup-ignite-nlw/issues"
+  },
+  "homepage": "https://github.com/slooock/setup-ignite-nlw#readme",
+  "dependencies": {
+    "express": "^4.16.0",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0"
+  }
+}
