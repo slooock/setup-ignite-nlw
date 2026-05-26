@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+set timeout 30
+spawn ssh -o StrictHostKeyChecking=no kayque@10.200.9.40 "sudo -S find /var/lib/docker/volumes /var/jenkins_home -name 'sbom-universal.cdx.json' -type f 2>/dev/null | head -n 1 | xargs sudo cat"
+expect "password:"
+send "b2-4ac\r"
+expect "password for kayque:"
+send "b2-4ac\r"
+expect eof

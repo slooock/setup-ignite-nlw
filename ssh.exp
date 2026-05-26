@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+set timeout 20
+spawn ssh -o StrictHostKeyChecking=no kayque@10.200.9.40 "sudo -S docker ps"
+expect "password:"
+send "b2-4ac\r"
+expect "password for kayque:"
+send "b2-4ac\r"
+expect eof

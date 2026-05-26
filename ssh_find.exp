@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+set timeout 30
+spawn ssh -o StrictHostKeyChecking=no kayque@10.200.9.40 "sudo -S docker exec -i \$(sudo docker ps -qf name=rf_jenkins-eagle-19-pam-app-4478) cat /var/jenkins_home/workspace/5-pam-app-609313-ba6db361_master@2/rf-reports/sbom-universal.cdx.json"
+expect "password:"
+send "b2-4ac\r"
+expect "password for kayque:"
+send "b2-4ac\r"
+expect eof
