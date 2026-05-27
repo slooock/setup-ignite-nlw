@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SpotBugs Security Include Filter
+  Enables the security-focused bug detectors that map to OWASP Top 10.
+  This ensures all security patterns in the vulnerable classes are reported.
+-->
+<FindBugsFilter>
+
+    <!-- SQL Injection -->
+    <Match>
+        <Bug category="SECURITY"/>
+    </Match>
+
+    <!-- Weak cryptography -->
+    <Match>
+        <Bug pattern="WEAK_MESSAGE_DIGEST_MD5"/>
+    </Match>
+    <Match>
+        <Bug pattern="WEAK_MESSAGE_DIGEST_SHA1"/>
+    </Match>
+    <Match>
+        <Bug pattern="DES_USAGE"/>
+    </Match>
+    <Match>
+        <Bug pattern="RSA_NO_PADDING"/>
+    </Match>
+    <Match>
+        <Bug pattern="STATIC_IV"/>
+    </Match>
+    <Match>
+        <Bug pattern="ECB_MODE"/>
+    </Match>
+
+    <!-- Insecure randomness -->
+    <Match>
+        <Bug pattern="PREDICTABLE_RANDOM"/>
+    </Match>
+    <Match>
+        <Bug pattern="PREDICTABLE_RANDOM_SCALA"/>
+    </Match>
+
+    <!-- Command injection / OS command -->
+    <Match>
+        <Bug pattern="COMMAND_INJECTION"/>
+    </Match>
+    <Match>
+        <Bug pattern="RUNTIME_EXEC_CMD"/>
+    </Match>
+
+    <!-- Path traversal -->
+    <Match>
+        <Bug pattern="PATH_TRAVERSAL_IN"/>
+    </Match>
+    <Match>
+        <Bug pattern="PATH_TRAVERSAL_OUT"/>
+    </Match>
+
+    <!-- Deserialization -->
+    <Match>
+        <Bug pattern="OBJECT_DESERIALIZATION"/>
+    </Match>
+
+    <!-- SSL/TLS issues -->
+    <Match>
+        <Bug pattern="SSL_BAD_CERT_TRUST"/>
+    </Match>
+    <Match>
+        <Bug pattern="SSL_BAD_HOSTNAME"/>
+    </Match>
+
+    <!-- Hardcoded credentials -->
+    <Match>
+        <Bug pattern="HARD_CODE_PASSWORD"/>
+    </Match>
+    <Match>
+        <Bug pattern="HARD_CODE_KEY"/>
+    </Match>
+
+    <!-- Open redirect / response splitting -->
+    <Match>
+        <Bug pattern="HTTP_RESPONSE_SPLITTING"/>
+    </Match>
+    <Match>
+        <Bug pattern="UNVALIDATED_REDIRECT"/>
+    </Match>
+
+    <!-- SSRF -->
+    <Match>
+        <Bug pattern="URLCONNECTION_SSRF_FD"/>
+    </Match>
+
+    <!-- XSS -->
+    <Match>
+        <Bug pattern="XSS_REQUEST_PARAMETER_TO_SEND_ERROR"/>
+    </Match>
+    <Match>
+        <Bug pattern="XSS_REQUEST_PARAMETER_TO_SERVLET_WRITER"/>
+    </Match>
+
+    <!-- General correctness bugs -->
+    <Match>
+        <Bug category="CORRECTNESS"/>
+    </Match>
+
+    <!-- Malicious code risks -->
+    <Match>
+        <Bug category="MALICIOUS_CODE"/>
+    </Match>
+
+</FindBugsFilter>

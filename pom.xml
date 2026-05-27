@@ -5,122 +5,136 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>setup-ignite-nlw</artifactId>
+    <artifactId>setup-ignite-nlw-parent</artifactId>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <!-- ==================== Logging & Utils ==================== -->
-        <!-- Log4j 2.14.1: Log4Shell Vulnerability (CVE-2021-44228 - Critical RCE) -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.14.1</version>
-        </dependency>
+    <name>Setup Ignite NLW - Parent (SAST Test)</name>
+    <description>Multi-module Maven project with intentional vulnerabilities for SpotBugs SAST scanning.</description>
 
-        <!-- Google Guava 24.1-jre: Uncontrolled Resource Consumption (CVE-2018-10237) -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>24.1-jre</version>
-        </dependency>
+    <!-- Multi-module: includes the VulnerableJavaProject submodule -->
+    <modules>
+        <module>VulnerableJavaProject</module>
+    </modules>
 
-        <!-- Apache Commons Collections 3.2.1: Remote Code Execution via Deserialization (CVE-2015-7501) -->
-        <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>3.2.1</version>
-        </dependency>
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- ==================== Logging & Utils ==================== -->
+            <!-- Log4j 2.14.1: Log4Shell Vulnerability (CVE-2021-44228 - Critical RCE) -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.14.1</version>
+            </dependency>
 
-        <!-- ==================== Serialization & Parsing ==================== -->
-        <!-- Jackson Databind 2.9.8: Deserialization RCE Vulnerability (CVE-2019-12384) -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.8</version>
-        </dependency>
+            <!-- Google Guava 24.1-jre: Uncontrolled Resource Consumption (CVE-2018-10237) -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>24.1-jre</version>
+            </dependency>
 
-        <!-- Fastjson 1.2.24: Remote Code Execution (CVE-2017-18349) -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.24</version>
-        </dependency>
+            <!-- Apache Commons Collections 3.2.1: Remote Code Execution via Deserialization (CVE-2015-7501) -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2.1</version>
+            </dependency>
 
-        <!-- XStream 1.4.15: Remote Code Execution / Arbitrary Code Execution (CVE-2021-21351) -->
-        <dependency>
-            <groupId>com.thoughtworks.xstream</groupId>
-            <artifactId>xstream</artifactId>
-            <version>1.4.15</version>
-        </dependency>
+            <!-- ==================== Serialization & Parsing ==================== -->
+            <!-- Jackson Databind 2.9.8: Deserialization RCE Vulnerability (CVE-2019-12384) -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.8</version>
+            </dependency>
 
-        <!-- SnakeYAML 1.30: Out-of-bounds Write / DoS (CVE-2022-25857) -->
-        <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-            <version>1.30</version>
-        </dependency>
+            <!-- Fastjson 1.2.24: Remote Code Execution (CVE-2017-18349) -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.24</version>
+            </dependency>
 
-        <!-- Dom4j 1.6.1: XML External Entity / RCE (CVE-2018-1000632) -->
-        <dependency>
-            <groupId>dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
-        </dependency>
+            <!-- XStream 1.4.15: Remote Code Execution / Arbitrary Code Execution (CVE-2021-21351) -->
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>1.4.15</version>
+            </dependency>
 
+            <!-- SnakeYAML 1.30: Out-of-bounds Write / DoS (CVE-2022-25857) -->
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>1.30</version>
+            </dependency>
 
-        <!-- ==================== Frameworks & Web ==================== -->
-        <!-- Spring WebMVC 5.0.0.RELEASE: Spring4Shell and SpEL Injection (CVE-2018-1270, CVE-2022-22965) -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.0.0.RELEASE</version>
-        </dependency>
+            <!-- Dom4j 1.6.1: XML External Entity / RCE (CVE-2018-1000632) -->
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>1.6.1</version>
+            </dependency>
 
-        <!-- Apache Struts2 2.5.25: Remote Code Execution (CVE-2020-17530) -->
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-core</artifactId>
-            <version>2.5.25</version>
-        </dependency>
+            <!-- ==================== Frameworks & Web ==================== -->
+            <!-- Spring WebMVC 5.0.0.RELEASE: Spring4Shell and SpEL Injection (CVE-2018-1270, CVE-2022-22965) -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>5.0.0.RELEASE</version>
+            </dependency>
 
-        <!-- Apache Shiro 1.5.1: Authentication Bypass (CVE-2020-1957) -->
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
-            <version>1.5.1</version>
-        </dependency>
+            <!-- Apache Struts2 2.5.25: Remote Code Execution (CVE-2020-17530) -->
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-core</artifactId>
+                <version>2.5.25</version>
+            </dependency>
 
+            <!-- Apache Shiro 1.5.1: Authentication Bypass (CVE-2020-1957) -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>1.5.1</version>
+            </dependency>
 
-        <!-- ==================== Networking & Servers ==================== -->
-        <!-- Netty All 4.1.42.Final: Request Smuggling & Security Bypass (CVE-2019-16869) -->
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>4.1.42.Final</version>
-        </dependency>
+            <!-- ==================== Networking & Servers ==================== -->
+            <!-- Netty All 4.1.42.Final: Request Smuggling & Security Bypass (CVE-2019-16869) -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.42.Final</version>
+            </dependency>
 
-        <!-- Tomcat Embed Core 9.0.30: Ghostcat Vulnerability (CVE-2020-1938) -->
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>9.0.30</version>
-        </dependency>
+            <!-- Tomcat Embed Core 9.0.30: Ghostcat Vulnerability (CVE-2020-1938) -->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>9.0.30</version>
+            </dependency>
 
+            <!-- ==================== Databases ==================== -->
+            <!-- H2 Database 1.4.199: Remote Code Execution (CVE-2021-23463, CVE-2022-23221) -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.199</version>
+            </dependency>
 
-        <!-- ==================== Databases ==================== -->
-        <!-- H2 Database 1.4.199: Remote Code Execution (CVE-2021-23463, CVE-2022-23221) -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.199</version>
-        </dependency>
+            <!-- PostgreSQL JDBC Driver 42.3.1: Remote Code Execution (CVE-2022-21724) -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.3.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-        <!-- PostgreSQL JDBC Driver 42.3.1: Remote Code Execution (CVE-2022-21724) -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.3.1</version>
-        </dependency>
-    </dependencies>
 </project>
