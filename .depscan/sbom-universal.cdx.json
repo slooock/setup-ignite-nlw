@@ -1,0 +1,110 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:fa29bc03-2d4b-41b5-bdd6-e5c09fa2fbf8",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-05-29T14:41:57Z",
+    "lifecycles": [
+      {
+        "phase": "pre-build"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "name": "setup-ignite-nlw-depscan-fixture",
+      "version": "1.0.0",
+      "purl": "pkg:npm/setup-ignite-nlw-depscan-fixture@1.0.0",
+      "bom-ref": "pkg:npm/setup-ignite-nlw-depscan-fixture@1.0.0"
+    }
+  },
+  "components": [
+    {
+      "type": "framework",
+      "name": "express",
+      "version": "4.16.0",
+      "scope": "optional",
+      "purl": "pkg:npm/express@4.16.0",
+      "bom-ref": "pkg:npm/express@4.16.0"
+    },
+    {
+      "type": "library",
+      "name": "lodash",
+      "version": "4.17.11",
+      "scope": "optional",
+      "purl": "pkg:npm/lodash@4.17.11",
+      "bom-ref": "pkg:npm/lodash@4.17.11"
+    },
+    {
+      "type": "library",
+      "name": "bootstrap",
+      "version": "4.3.1",
+      "scope": "optional",
+      "purl": "pkg:npm/bootstrap@4.3.1",
+      "bom-ref": "pkg:npm/bootstrap@4.3.1"
+    },
+    {
+      "type": "library",
+      "name": "jquery",
+      "version": "3.4.1",
+      "scope": "optional",
+      "purl": "pkg:npm/jquery@3.4.1",
+      "bom-ref": "pkg:npm/jquery@3.4.1"
+    },
+    {
+      "type": "library",
+      "name": "ckeditor",
+      "version": "4.7.3",
+      "scope": "optional",
+      "purl": "pkg:npm/ckeditor@4.7.3",
+      "bom-ref": "pkg:npm/ckeditor@4.7.3"
+    },
+    {
+      "type": "library",
+      "name": "tinymce",
+      "version": "4.5.7",
+      "scope": "optional",
+      "purl": "pkg:npm/tinymce@4.5.7",
+      "bom-ref": "pkg:npm/tinymce@4.5.7"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:npm/setup-ignite-nlw-depscan-fixture@1.0.0",
+      "dependsOn": [
+        "pkg:npm/express@4.16.0",
+        "pkg:npm/lodash@4.17.11",
+        "pkg:npm/bootstrap@4.3.1",
+        "pkg:npm/jquery@3.4.1",
+        "pkg:npm/ckeditor@4.7.3",
+        "pkg:npm/tinymce@4.5.7"
+      ]
+    },
+    {
+      "ref": "pkg:npm/express@4.16.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/lodash@4.17.11",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/bootstrap@4.3.1",
+      "dependsOn": [
+        "pkg:npm/jquery@3.4.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/jquery@3.4.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/ckeditor@4.7.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/tinymce@4.5.7",
+      "dependsOn": []
+    }
+  ]
+}

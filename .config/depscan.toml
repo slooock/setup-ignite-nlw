@@ -5,3 +5,4 @@ reachability_analyzer = "off"
 no_vuln_table = true
 custom_data = "/git/.depscan/custom_vulns"
 search_order = "pcu"
+bom = "/git/.depscan/sbom-universal.cdx.json"
