@@ -1,0 +1,4 @@
+project_type = ["nodejs"]
+fuzzy_search = true
+risk_audit = true
+reachability_analyzer = "off"
