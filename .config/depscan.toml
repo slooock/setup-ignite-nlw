@@ -3,3 +3,5 @@ fuzzy_search = true
 risk_audit = true
 reachability_analyzer = "off"
 no_vuln_table = true
+custom_data = "/git/.depscan/custom_vulns"
+search_order = "pcu"

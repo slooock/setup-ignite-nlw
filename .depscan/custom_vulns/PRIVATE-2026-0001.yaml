@@ -1,0 +1,27 @@
+dataType: CVE_RECORD
+dataVersion: "5.1"
+cveMetadata:
+  cveId: PRIVATE-2026-0001
+  assignerOrgId: "00000000-0000-4000-8000-000000000000"
+  state: PUBLISHED
+  datePublished: "2026-05-29T00:00:00Z"
+  dateUpdated: "2026-05-29T00:00:00Z"
+containers:
+  cna:
+    providerMetadata:
+      orgId: "00000000-0000-4000-8000-000000000000"
+    descriptions:
+      - lang: en
+        value: Private test vulnerability used to validate DepScan reporting for the Eagle pipeline.
+    references:
+      - url: https://example.invalid/advisories/PRIVATE-2026-0001
+    affected:
+      - vendor: npm
+        product: lodash
+        packageName: lodash
+        packageURL: pkg:npm/lodash
+        versions:
+          - version: "4.0.0"
+            status: affected
+            versionType: semver
+            lessThan: "4.17.21"
