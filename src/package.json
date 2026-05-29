@@ -1,0 +1,13 @@
+{
+  "name": "setup-ignite-nlw-depscan-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pinned vulnerable dependencies used to validate DepScan SCA findings.",
+  "dependencies": {
+    "bootstrap": "4.3.1",
+    "ckeditor": "4.7.3",
+    "jquery": "3.4.1",
+    "lodash": "4.17.11",
+    "tinymce": "4.5.7"
+  }
+}
