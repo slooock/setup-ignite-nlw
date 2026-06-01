@@ -11,7 +11,21 @@
                  ;; Jackson Databind 2.9.8: Deserialization RCE (CVE-2019-12384)
                  [com.fasterxml.jackson.core/jackson-databind "2.9.8"]
                  ;; Cheshire 5.8.0: Old JSON parsing library version with dependencies having known vulnerabilities
-                 [cheshire "5.8.0"]]
+                 [cheshire "5.8.0"]
+                 ;; Apache Commons Collections 3.2.1: Deserialization RCE (CVE-2015-7501)
+                 [commons-collections/commons-collections "3.2.1"]
+                 ;; Fastjson 1.2.24: Remote Code Execution (CVE-2017-18349)
+                 [com.alibaba/fastjson "1.2.24"]
+                 ;; XStream 1.4.15: Remote Code Execution (CVE-2021-21351)
+                 [com.thoughtworks.xstream/xstream "1.4.15"]
+                 ;; SnakeYAML 1.30: Out-of-bounds Write / DoS (CVE-2022-25857)
+                 [org.yaml/snakeyaml "1.30"]
+                 ;; Dom4j 1.6.1: XML External Entity / RCE (CVE-2018-1000632)
+                 [dom4j/dom4j "1.6.1"]
+                 ;; PostgreSQL JDBC Driver 42.3.1: Remote Code Execution (CVE-2022-21724)
+                 [org.postgresql/postgresql "42.3.1"]
+                 ;; H2 Database 1.4.199: Remote Code Execution (CVE-2021-23463, CVE-2022-23221)
+                 [com.h2database/h2 "1.4.199"]]
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]]}}
   :main ^:skip-aot vulnerable-app.core
   :target-path "target/%s")
